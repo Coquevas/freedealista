@@ -1,0 +1,156 @@
+<!doctype html>
+<!--
+
+FREEdealista
+
+Author:
+Jorge Vas Moreno <info@freedealista.com>
+
+Version:
+1.1
+
+License:
+MIT
+
+-->
+
+<html 
+	lang="es" 
+	xmlns:og="http://opengraphprotocol.org/schema/"
+	xmlns:fb="http://www.facebook.com/2008/fbml"
+>
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>FREEdealista - Alquila tu próxima casa o piso sin agencias</title>
+		
+		<meta name="description" content="Alquila tu próxima casa o piso sin agencias" />
+		<meta name="author" content="Jorge Vas Moreno <info@freedealista.com>" />
+		
+		<meta property="og:title" content="FREEdealista - ¿Cansado de las agencias cuando buscas piso?" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://www.freedealista.com" />
+		<meta property="og:image" content="http://www.freedealista.com/thumbnail.jpg" />
+		<meta property="og:site_name" content="FREEdealista" />
+		<meta property="fb:admins" content="1105897741" />
+
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<link rel="stylesheet" href="css/screen.css?v=1.0" />
+		<link rel="stylesheet" href="css/custom-jquery-ui/jquery-ui-1.8.10.custom.css?v=1.0" />
+
+		<script src="js/modernizr-1.6.min.js"></script>
+
+		<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-21342932-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+
+	</head>
+
+	<body class="home">
+
+		<header id="hd1">
+
+			<div id="hlogo">
+				<a href="/"><h1>FREEdealista</h1><h2>powered by idealista.com</h2></a>		
+			</div>			
+			<div id="search">
+				<input id="address" type="text" />
+				<input id="geocode" type="button" value="Ir" />
+				<input id="center" type="button" value="Centrar" />		
+				<p>¿Cansado de las agencias cuando buscas piso?</p>
+			</div>
+		</header><!-- #hd1 -->
+
+		<div id="main">
+			
+			<div id="map-canvas"></div>
+
+		</div><!-- #main -->
+		
+		<aside class="formUiContainer" id="sidebar">
+			<fieldset>
+				<div class="formUiContainer" id="since">
+					<input type="radio" id="since-w" name="since" /><label for="since-w">La última semana</label>
+					<input type="radio" id="since-m" name="since" /><label for="since-m">El último mes</label>
+					<input type="radio" id="since-a" name="since" /><label for="since-a">Siempre</label>
+				</div>
+				
+				<div class="formUiContainer">
+					<p>
+						<label for="price-amount">Precio:</label>
+						<input type="text" id="price-amount" class="slider-amount" />
+					</p>
+					<div id="price-range"></div>
+				</div>
+				
+				<div class="formUiContainer">
+					<p>
+						<label for="size-amount">Tamaño:</label>
+						<input type="text" id="size-amount" class="slider-amount" />
+					</p>
+					<div id="size-range"></div>
+				</div>
+				
+				<div class="formUiContainer">
+					<p>
+						<label for="rooms-amount">Dormitorios:</label>
+						<input type="text" id="rooms-amount" class="slider-amount" />
+					</p>
+					<div id="rooms-range"></div>
+				</div>
+				
+				<div class="formUiContainer">
+					<p>
+						<label for="rooms-amount">Planta:</label>
+						<input type="text" id="floor-amount" class="slider-amount" />
+					</p>
+					<div id="floor-range"></div>
+				</div>
+				
+				<div class="formUiContainer" id="specialFloors">
+					<input type="checkbox" id="floor-bj" /><label for="floor-bj">Bajo</label>
+					<input type="checkbox" id="floor-en" /><label for="floor-en">Entreplanta</label>
+				</div>				
+				
+				<div id="agencyContainer" class="formUiContainer">
+					<input type="checkbox" id="agency" /><label for="agency">Mostrar agencias</label>
+				</div>
+				
+				<div class="facebook-share">
+					<fb:like href="http://www.freedealista.com" width="360" show_faces="false"></fb:like>
+				</div>
+				
+			</fieldset>
+			<div id="loading"></div>
+			<div id="propertyList"></div>
+		</aside><!-- #sidebar -->
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
+		<script>!window.jQuery.ui && document.write(unescape('%3Cscript src="js/jquery-ui-1.8.10.min.js"%3E%3C/script%3E'))</script>
+		<script src="http://maps.google.com/maps/api/js?v=3.3&amp;sensor=false"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/draggablecircle-1.0.js"></script>
+		<script src="js/general-1.0.js"></script>
+		<script src="js/ui.geo_autocomplete.js"></script>
+		<script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script>
+	</body>
+</html>
+<!--
+
+"I think we'll be OK here, Leon."
+
+-->

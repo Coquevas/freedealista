@@ -1,0 +1,308 @@
+/**
+ * FREEdealista Style sheet.
+ * 
+ * @author: Jorge Vas Moreno <info@freedealista.com>
+ * @author: Google Maps
+ * @version: 1.0
+ * 
+ */
+
+/* Eric Meyer's reset
+	http://meyerweb.com/eric/tools/css/reset/ 
+	v2.0b1 | 201101 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+a { margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+:focus {
+	outline: none;
+}
+
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* Meyer's reset ends here */
+
+
+/* base.css, part of YUI's CSS Foundation */
+h1,h2,h3 {
+	/* top & bottom margin based on font size */
+	margin: 1em 0;
+}
+h1,h2,h3,h4,h5,h6,strong {
+	/*bringing boldness back to headers and the strong element*/
+	font-weight: bold; 
+}
+abbr,acronym {
+	/*indicating to users that more info is available */
+	border-bottom: 1px dotted #000;
+	cursor: help;
+} 
+em {
+	/*bringing italics back to the em element*/
+	font-style: italic;
+}
+blockquote,ul,ol,dl {
+	/*giving blockquotes and lists room to breath*/
+	margin: 1em;
+}
+ol,ul,dl {
+	/*bringing lists on to the page with breathing room */
+	margin-left: 2em;
+}
+ol li {
+	/*giving OL's LIs generated numbers*/
+	list-style: decimal outside;	
+}
+ul li {
+	/*giving UL's LIs generated disc markers*/
+	list-style: disc outside;
+}
+dl dd {
+	/*giving UL's LIs generated numbers*/
+	margin-left: 1em;
+}
+th,td {
+	/*borders and padding to make the table readable*/
+	border: 1px solid #000;
+	padding: .5em;
+}
+th {
+	/*distinguishing table headers from data cells*/
+	font-weight: bold;
+	text-align: center;
+}
+caption {
+	/*coordinated marking to match cell's padding*/
+	margin-bottom: .5em;
+	/*centered so it doesn't blend in to other content*/
+	text-align: center;
+}
+p,fieldset,table {
+	/*so things don't run into each other*/
+	margin-bottom: 1em;
+}
+/* base.css ends here */
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 62.5%;
+	color: #222;
+}
+
+h1 {
+	font-size: 1.8em;
+}
+h2 {
+	font-size: 1.6em; 
+}
+h3 {
+	font-size: 1.4em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+#map-canvas {
+	height: 500px;
+}
+
+.slider-amount {
+	border: 0;
+	color: #06c;
+	font-weight: bold;
+}
+
+#home {
+	display: table;
+}
+
+#hd1 {
+	border-bottom: 2em solid #6699ff;
+	height: 11em;
+}
+
+#hd1 #hlogo {
+	float: left;
+	height: 90px;
+	margin-top: 10px;
+	width: 368px;
+}
+
+#hlogo a {
+	background-position: 0 0;
+	background-image: url(/img/logo.png);
+	display: block;
+	float: left;
+	height: 90px;
+	text-indent: -999999em;
+	width: 368px;
+}
+
+#hd1 #search {
+	float: left;
+	margin-top: 10px;
+	padding: 28px 0 20px 5px;
+}
+
+#address{
+	border: 1px solid #ddd;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	padding: 0.4em;
+	width: 22.4em;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+#main {
+	margin-left: 40em;
+}
+
+aside {
+	left: 0;
+	position: absolute;
+	top: 13em;
+	width: 40em;
+}
+
+aside fieldset {
+	padding: 2em 2em 0 2em;
+	margin: 0;
+}
+
+#propertyList {
+	padding: 0 2em;
+	overflow: auto;
+}
+
+#loading {
+	background: url(/img/preloader.gif) #fff no-repeat 38em 0.5em;
+	/* for IE */
+	filter:alpha(opacity=80);
+	/* CSS3 standard */
+	opacity:0.8;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40em;
+}
+
+.formUiContainer {
+	margin-bottom: 2em;
+}
+
+.facebook-share {
+	height: 4em;
+	width: 36em;
+}
+
+#agencyContainer .ui-state-active, 
+#agencyContainer .ui-widget-content .ui-state-active, 
+#agencyContainer .ui-widget-header .ui-state-active {
+	background-image: url('/css/custom-jquery-ui/images/ui-bg_glass_65_0066cc_1x400.png');
+	background-color: #06c;
+}
+
+.property {
+	outline: 1px solid #ddd;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #c06;
+	padding: 0.5em 1em;
+	background: #f0f0f0;
+	margin: 0.1em 0.1em 0.5em;
+}
+
+.property.agency {
+	border-left: 1px solid #06c;
+}
+
+#map-canvas .property {
+	margin: 1px;
+}
+
+.property a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #06c;
+}
+
+.property a:visited {
+	color: #7ac;
+}
+
+.property a:hover {
+	color: #c06;
+}
+
+.property .pic {
+	float: left;
+	margin-top: 0.5em;
+	height: 32px;
+	width: 32px;
+}
+
+.property .content {
+	margin-left: 74px;
+	min-height: 64px;
+}
+
+.property .content h2, 
+.property .content p {
+	margin: 0;
+	line-height: 1.4em;
+}
+
+.property .content .old {
+	color: #999;
+}

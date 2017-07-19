@@ -1,0 +1,20 @@
+{
+    "name": "coquevas/freedealista",
+    "description": "Alquila tu próxima casa o piso sin agencias",
+    "keywords": [
+        "idealista",
+        "maps",
+        "agency"
+    ],
+    "homepage": "https://github.com/Coquevas/freedealista",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jorge Vas Moreno",
+            "email": "coquevas@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    }
+}

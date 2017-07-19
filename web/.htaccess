@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.freedealista\.es$ [NC]
+RewriteRule ^(.*)$ http://www.freedealista.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^freedealista\.es$ [NC]
+RewriteRule ^(.*)$ http://www.freedealista.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^freedealista\.com$ [NC]
+RewriteRule ^(.*)$ http://www.freedealista.com/$1 [R=301,L]
