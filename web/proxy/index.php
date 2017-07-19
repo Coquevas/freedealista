@@ -14,7 +14,7 @@
 		'&pics='      . $_GET['pics'] .
 		'&numPage='   . $_GET['numPage'] .
 		'&action='    . $_GET['action'] .
-		'&apikey='    . $_ENV['IDEALISTA_API_KEY'];
+		'&apikey='    . getenv('IDEALISTA_API_KEY');
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
