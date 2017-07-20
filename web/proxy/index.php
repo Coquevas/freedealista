@@ -16,6 +16,10 @@
 		'&action='    . $_GET['action'] .
 		'&apikey='    . getenv('IDEALISTA_API_KEY');
 
+	if (getenv('DEBUG')) {
+		error_log(sprintf("Request to idealista API: %s", $url));
+	}
+
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
