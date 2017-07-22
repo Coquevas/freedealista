@@ -61,7 +61,7 @@ $(function () {
 
 			contentString = contentDiv.outerHtml();
 			
-			if(item.agency) {
+			if(idealista.isAgencyProperty(item)) {
 				iconImg = 'img/agency.' + item.lastUpdate + '.png';
 				shadowImg = 'img/agency.shadow.png';
 			} else {
@@ -110,7 +110,7 @@ $(function () {
 			var count = 0, marker, filters = {};
 			$.each(elementList, function(i,item){
 				if (flags.noAgency) {
-					filters.noAgency = !item.agency;
+					filters.noAgency = !idealista.isAgencyProperty(item);
 				} else {
 					filters.noAgency = true;
 				}
@@ -549,7 +549,7 @@ $(function () {
 				distance: s.distance,
 				minPrice: s.minPrice,
 				maxPrice: s.maxPrice,
-				operation: 'rent',
+				operation: 'A', // rent (alquiler)
 				minSize: s.minSize,
 				maxSize: s.maxSize,
 				minRooms: s.minRooms,
@@ -566,12 +566,11 @@ $(function () {
 		
 		parseXSS: function (data, since) {
 			if(data){
-				var props = data[1];
-				if (props.actualPage < props.totalPages) {
-					me.getPropertyMap(props.actualPage + 1, since);
+				if (data.actualPage < data.totalPages) {
+					me.getPropertyMap(data.actualPage + 1, since);
 				}
 				s.requestCounter--;
-				me.appendJsonToPropertyList(props.elementList, since);
+				me.appendJsonToPropertyList(data.elementList, since);
 			} else {
 				console.log('idealista.com is down');
 			}
@@ -594,6 +593,19 @@ $(function () {
 				gMaps.renderPropertyList(properties, s.filters);
 			}
 		},
+
+		isAgencyProperty: function (item) {
+			// API provider not filling agency anymore, but using "showAddress" as a workaround
+			return item.agency || !item.showAddress;
+		},
+
+		getPropertyPosition: function (item) {
+			var position = "exterior";
+			if (!item.exterior) {
+				position = "interior"
+			}
+			return position;
+		},
 		
 		getPropertyHtmlInfo: function (item) {
 			var wrapper, pic, content, detail;
@@ -612,9 +624,9 @@ $(function () {
 				$('<p>').writeAlert('Dirección aproximada').appendTo(content);
 			}		
 			
-			$('<span>'+item.size+' m&sup2; '+item.position+'</span>').addClass('size').appendTo(detail);
+			$('<span>'+item.size+' m&sup2; '+idealista.getPropertyPosition(item)+'</span>').addClass('size').appendTo(detail);
 			detail.append(' | ');
-			$('<span>'+item.rooms+' habitaciones</span>').addClass('rooms').appendTo(detail);
+			$('<span>'+item.rooms+' hab.</span>').addClass('rooms').appendTo(detail);
 			detail.appendTo(content);
 			
 			$('<p>Planta '+item.floor+'ª</p>').addClass('floor').appendTo(content);
@@ -623,7 +635,7 @@ $(function () {
 			pic.appendTo(wrapper);
 			content.appendTo(wrapper);
 			
-			if(item.agency) {
+			if(idealista.isAgencyProperty(item)) {
 				wrapper.addClass('agency');
 			}
 			

@@ -288,8 +288,10 @@ aside fieldset {
 .property .pic {
 	float: left;
 	margin-top: 0.5em;
-	height: 32px;
-	width: 32px;
+}
+
+.property .pic img {
+	width: 64px;
 }
 
 .property .content {

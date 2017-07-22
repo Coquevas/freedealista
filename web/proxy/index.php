@@ -1,6 +1,6 @@
 <?php
 	header('Content-type: application/json'); 
-	$method = 'https://www.idealista.com/labs/api/2/search';
+	$method = 'http://idealista-prod.apigee.net/public/2/search';
 	$url = $method .
 		'?center='    . $_GET['center'] .
 		'&distance='  . $_GET['distance'] .
@@ -13,18 +13,32 @@
 		'&since='     . $_GET['since'] .
 		'&pics='      . $_GET['pics'] .
 		'&numPage='   . $_GET['numPage'] .
+		'&maxItems=50' .
+		'&country=es' .
 		'&action='    . $_GET['action'] .
 		'&apikey='    . getenv('IDEALISTA_API_KEY');
 
-	if (getenv('DEBUG')) {
-		error_log(sprintf("Request to idealista API: %s", $url));
-	}
+	debugLog(sprintf("Request to idealista API: %s", $url));
 
 	$ch = curl_init();
+	
 	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_REFERER, 'http://www.freedealista.com/');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+	
 	$response = curl_exec($ch);
-	curl_close($ch);
+	
+	if ($response === false) {
+		debugLog(sprintf("Request to idealista API failed: %s", scurl_error($ch)));
+	} 
+	
+	curl_close($ch); 
 
 	echo $_GET['callback'] . '(' . $response . ')';
+
+	function debugLog($message) {
+		if (getenv('DEBUG')) {
+			error_log($message);
+		}
+	}
